@@ -54,4 +54,12 @@ Route::get('goiroute',function (){
 });
 
 //group route
-Route::group(['prefix'=>'Mygroup'])
+Route::group(['prefix'=>'Mygroup'],function (){
+    Route::get('user1',function (){
+        echo "user 1";
+    });
+    Route::get('user2',function (){
+        echo "user 2";
+    });
+});
+
