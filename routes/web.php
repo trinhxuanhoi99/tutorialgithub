@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Mycontroller;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*
+cách call controller
+add use App\Http\Controllers\[tên controller vừa tạo];
+cấu trúc gọi
+Route::get('uri',[namecontroller::class,'function']);
+*/
 Route::get('/', function () {
     return view('welcome');
 });
@@ -63,3 +69,21 @@ Route::group(['prefix'=>'Mygroup'],function (){
     });
 });
 
+Route::get('callcontroller/{user}',[Mycontroller::class,'index']);
+Route::get('Thamso/{ten}',[Mycontroller::class,'Khoahoc']);
+
+// URL
+
+Route::get('Myrequest',[Mycontroller::class,'GetUrl']);
+
+// goi view
+
+Route::get('getform',function (){
+    return view('postForm');
+});
+
+Route::post('PostForm1',[Mycontroller::class,'form'])->name('Postform');
+
+//cookies
+Route::get('setcookie',[Mycontroller::class,'setcookie']);
+Route::get('getcookies',[Mycontroller::class,'getcookie']);
